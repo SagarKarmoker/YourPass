@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#1d1a5f">
+
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico"
+        android:text="YourPass"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="44sp"
+        android:layout_marginTop="50dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/head"
+        android:text="Your personal password generator"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:fontFamily="@font/chango"
+        android:layout_marginTop="4dp"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="35dp"
+        android:elevation="8dp"
+        android:layout_centerInParent="true"
+        >
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/bg"
+            android:background="@drawable/custom_btn"
+            android:layout_centerInParent="true"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/enterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/custom_btn"
+        android:fontFamily="@font/chango"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:text="Enter"
+        android:textAlignment="center"
+        android:textColor="#24578a"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:backgroundTint="#40e5ed"
+        app:icon="@drawable/baseline_arrow_forward_ios_20"
+        app:iconGravity="textEnd"
+        app:iconSize="20dp"
+        app:iconTint="#24578a" />
+
+
+
+</RelativeLayout>

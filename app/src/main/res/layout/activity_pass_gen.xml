@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PassGen"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YourPass - password generator"
+            android:textColor="@color/black"
+            android:fontFamily="@font/pacifico"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            >
+            <ImageButton
+                android:id="@+id/historyBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/baseline_history_24"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="History Button"
+                android:padding="8dp"
+                />
+        </LinearLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="350dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#1d1a5f">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/chango"
+                android:text="Password"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/text_field_custom"
+                android:minHeight="48dp"
+                android:minEms="15"
+                android:padding="6dp" />
+
+            <ImageView
+                android:id="@+id/showQR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_qr_code_24"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="5dp"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="Select Option"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rBtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8 Length"
+                android:textStyle="bold" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rBtn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16 Length"
+                android:textStyle="bold" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="32 Length"
+                android:textStyle="bold" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rBtn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="48 Length"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="80dp"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/genBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generate"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/custom_btn"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:icon="@drawable/baseline_auto_fix_high_24"
+            app:iconGravity="textEnd"
+            app:iconTint="@color/black"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/copyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copy"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/custom_btn"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:paddingStart="25dp"
+            tools:ignore="RtlSymmetry"
+            app:icon="@drawable/baseline_content_copy_24"
+            app:iconTint="@color/black"/>
+
+    </LinearLayout>
+
+</LinearLayout>
