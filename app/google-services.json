@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "873379713245",
+    "project_id": "yourpass-c35d8",
+    "storage_bucket": "yourpass-c35d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873379713245:android:f9b70219b378672c798b34",
+        "android_client_info": {
+          "package_name": "com.helloworlddev.yourpass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873379713245-9r7pc5ia4h5ho5ocec8vr1o0fjt87pdv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEJUkUGJWKs0JhIJC9faJwTi2yOagS46I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873379713245-9r7pc5ia4h5ho5ocec8vr1o0fjt87pdv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,10 @@
 package com.helloworlddev.yourpass;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -17,16 +19,28 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.WriterException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 
 public class PassGen extends AppCompatActivity {
+    // Firebase section
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
+
     int length = 8;
     final StringBuilder[] password = new StringBuilder[1];
 
@@ -118,6 +132,32 @@ public class PassGen extends AppCompatActivity {
                 clip.setPrimaryClip(clipData);
 
                 Toast.makeText(PassGen.this, "Password copied to clipboard", Toast.LENGTH_LONG).show();
+
+                //firebase
+                String user = "user" + (int) (Math.random() * 999999);
+                Date date = Calendar.getInstance().getTime();
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String strDate = dateFormat.format(date);
+
+                PasswordModel pass = new PasswordModel(user, Arrays.toString(password), strDate);
+
+                db = FirebaseDatabase.getInstance();
+                ref = db.getReference("Users");
+                String userId = ref.push().getKey(); // Generate a unique user ID
+                assert userId != null;
+
+//                ref.child(userId).setValue(pass);
+                ref.child(userId).setValue(pass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(PassGen.this, "Password saved to database", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(PassGen.this, "Failed to save password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             }
         });
 
@@ -125,7 +165,12 @@ public class PassGen extends AppCompatActivity {
         showQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showQRcode(PassGen.this, passField.getText().toString());
+                if(passField.getText().toString().equals("")){
+                    Toast.makeText(PassGen.this, "Please generate password", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    showQRcode(PassGen.this, passField.getText().toString());
+                }
             }
         });
 
