@@ -24,6 +24,6 @@ Changes to this Privacy Policy
 We reserve the right to modify this Privacy Policy at any time. Updated versions will be posted within the App. Your continued use of the App after any modifications indicate your acceptance of the updated Privacy Policy.
 
 Contact Us
-If you have any questions or concerns about this Privacy Policy, please contact us at [Insert Contact Information].
+If you have any questions or concerns about this Privacy Policy, please contact us at admin@helloworlddev.software
 
 By using the YourPass - Password Generator Android App, you signify your consent to the collection, use, and disclosure of your personal information as described in this Privacy Policy.
