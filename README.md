@@ -26,5 +26,8 @@ Happy exploring with our new app on the Amazon Appstore!
 Best regards,
 
 Sagar Karmoker
-*
-Logo Image by Freepik
+
+
+
+
+*** Logo Image by Freepik
