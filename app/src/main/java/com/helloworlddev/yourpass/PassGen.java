@@ -36,20 +36,25 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.provider.Settings;
+
 public class PassGen extends AppCompatActivity {
     // Firebase section
     private FirebaseDatabase db;
     private DatabaseReference ref;
 
     int length = 8;
-    final StringBuilder[] password = new StringBuilder[1];
+    StringBuilder password = new StringBuilder();
 
     ArrayList <String> passHistory = new ArrayList<>();
+
+    String user = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pass_gen);
+
 
         MaterialButton genBtn = findViewById(R.id.genBtn);
         MaterialButton copyBtn = findViewById(R.id.copyBtn);
@@ -114,12 +119,12 @@ public class PassGen extends AppCompatActivity {
 
                 all = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+~`|}{[]:;?><,./-=0123456789";
 
-                password[0] = new StringBuilder();
+                password = new StringBuilder();
                 for (int i = 0; i < length; i++) {
-                    password[0].append(all.charAt((int) (Math.random() * all.length())));
+                    password.append(all.charAt((int) (Math.random() * all.length())));
                 }
-                passField.setText(password[0].toString());
-                passHistory.add(password[0].toString());
+                passField.setText(password.toString());
+                passHistory.add(password.toString());
             }
         });
 
@@ -128,18 +133,22 @@ public class PassGen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ClipboardManager clip = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("Copied Text", Arrays.toString(password));
+                ClipData clipData = ClipData.newPlainText("Copied Text", password);
                 clip.setPrimaryClip(clipData);
 
                 Toast.makeText(PassGen.this, "Password copied to clipboard", Toast.LENGTH_LONG).show();
 
                 //firebase
-                String user = "user" + (int) (Math.random() * 999999);
+                PasswordModel pass;
                 Date date = Calendar.getInstance().getTime();
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String strDate = dateFormat.format(date);
 
-                PasswordModel pass = new PasswordModel(user, Arrays.toString(password), strDate);
+                // setting imei number as user identity
+                user = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
+                String passwordString = password.toString();
+                pass = new PasswordModel(user, passwordString, strDate);
 
                 db = FirebaseDatabase.getInstance();
                 ref = db.getReference("Users");
